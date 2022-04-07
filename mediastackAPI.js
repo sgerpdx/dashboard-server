@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
+const fetch = require("node-fetch");
 
-export const getNews = async () => {
+const getNews = async () => {
   const response = await fetch(
     "http://api.mediastack.com/v1/news?access_key=ebcb8882d755d1ee0fcaf0aea55c0e52"
   );
@@ -8,3 +8,5 @@ export const getNews = async () => {
 
   console.log("Fetch:", data);
 };
+
+getNews();
