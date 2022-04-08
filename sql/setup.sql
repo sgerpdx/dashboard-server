@@ -1,31 +1,38 @@
-DROP TABLE IF EXISTS bookmarks;
-DROP TABLE IF EXISTS notes;
+DROP TABLE IF EXISTS drivers CASCADE;
+DROP TABLE IF EXISTS races;
 
-CREATE TABLE bookmarks (
+CREATE TABLE drivers (
     id SERIAL PRIMARY KEY NOT NULL,
-    bookmark_title TEXT NOT NULL,
-    bookmark_url TEXT NOT NULL,
-    date_created DATE
+    fname TEXT NOT NULL,
+    lname TEXT NOT NULL,
+    handle TEXT NOT NULL,
+    sponsor TEXT NOT NULL,
+    car_color TEXT NOT NULL,
+    car_number INTEGER NOT NULL
 );
 
-CREATE TABLE notes (
+CREATE TABLE races (
     id SERIAL PRIMARY KEY NOT NULL,
-    note_title TEXT NOT NULL,
-    note_text TEXT NOT NULL,
-    date_created DATE
+    race_location TEXT NOT NULL,
+    circuit TEXT NOT NULL,
+    daytime BOOLEAN NOT NULL,
+    distance INTEGER NOT NULL
 );
 
-INSERT INTO bookmarks (bookmark_title, bookmark_url, date_created)
+INSERT INTO drivers (fname, lname, handle, sponsor, car_color, car_number)
 VALUES (
-    'place kitten',
-    'https://placekitten.com/200/300',
-    '2022-04-04'
+    'Chrys',
+    'Penryn',
+    'Greybolt',
+    'Hi-Rale',
+    'silver',
+    9
 );
 
-INSERT INTO notes (note_title, note_text, date_created)
+INSERT INTO races (race_location, circuit, daytime, distance)
 VALUES (
-    'Donut Reminder',
-    'Remember to buy more donuts on Monday.',
-    '2022-04-04'
+    'South Logan',
+    'Whispering Blue Shores Raceway',
+    true,
+    4
 );
-
