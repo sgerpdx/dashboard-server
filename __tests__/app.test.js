@@ -1,25 +1,19 @@
 require("dotenv").config();
 const app = require("../lib/app.js");
 const pool = require("../lib/utils/pool");
-const supertest = require("supertest");
+const request = require("supertest");
 //const { bookmarksData } = require("../data/bookmarks");
 
 describe("postgresSQL database CRUD routes", () => {
-  //beforeAll
-  //afterAll
-
-  beforeEach(() => {
-    pool.connect();
-  });
-
-  afterEach(() => {
-    app.close();
-  });
+  // Will this code help?
+  //   beforeEach(() => {
+  //     return setup(pool);
+  //   });
 
   // Tests
-  it("verifies that Jest is working", () => {
-    expect(1).toBe(1);
-  });
+  //   it("verifies that Jest is working", () => {
+  //     expect(1).toBe(1);
+  //   });
 
   it("returns all bookmarks", async () => {
     //
@@ -87,7 +81,7 @@ describe("postgresSQL database CRUD routes", () => {
     ];
 
     //
-    const data = await supertest(app)
+    const data = await request(app)
       .get("/api/v1/bookmarks")
       .expect("Content-Type", /json/)
       .expect(200);
