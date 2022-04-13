@@ -89,4 +89,23 @@ describe("postgresSQL database CRUD routes", () => {
     //
     expect(data.body).toEqual(expectation);
   });
+
+  it("returns a single bookmark by id", async () => {
+    //
+    const expectation = {
+      id: 6,
+      bookmarkTitle: "The AV Yacht Club",
+      bookmarkURL: "https://www.avclub.com/",
+      dateCreated: "2022-04-06T07:00:00.000Z",
+    };
+
+    //
+    const data = await request(app)
+      .get("/api/v1/bookmarks/6")
+      .expect("Content-Type", /json/)
+      .expect(200);
+
+    //
+    expect(data.body).toEqual(expectation);
+  });
 });
