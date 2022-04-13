@@ -9,4 +9,4 @@ Currently this code provides for three endpoints:
 - /notes -- Meant for recording miscellaneous info for personal use. Not yet implemented in client.
 - /news -- Runs a simple fetch to external [Mediastack](https://mediastack.com/) API for news.
 
-As of yet user account/auth functionality has not been added to this code.
+At present user account/auth functionality has not yet been added to this code.

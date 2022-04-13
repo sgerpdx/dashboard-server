@@ -108,4 +108,44 @@ describe("postgresSQL database CRUD routes", () => {
     //
     expect(data.body).toEqual(expectation);
   });
+
+  it("creates and inserts a new bookmark row into the database", async () => {
+    //
+    const newBookmark = {
+      bookmarkTitle: "Mazda",
+      bookmarkURL: "https://www.mazda.com/",
+      dateCreated: "2022-04-13",
+    };
+
+    //
+    const expectation = {
+      ...newBookmark,
+      dateCreated: "2022-04-13T07:00:00.000Z",
+      id: 28,
+    };
+
+    //
+    const data = await request(app)
+      .post("/api/v1/bookmarks")
+      .send(newBookmark)
+      .expect("Content-Type", /json/)
+      .expect(200);
+
+    //
+    expect(data.body).toEqual(expectation);
+
+    //
+    const allBookmarks = await request(app)
+      .get("/api/v1/bookmarks")
+      .expect("Content-Type", /json/)
+      .expect(200);
+
+    //
+    const mazda = allBookmarks.body.find(
+      (bookmark) => bookmark.bookmarkTitle === "Mazda"
+    );
+
+    //
+    expect(mazda).toEqual(expectation);
+  });
 });
