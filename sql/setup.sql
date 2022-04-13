@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS bookmarks;
+DROP TABLE IF EXISTS bookmarks CASCADE;
 DROP TABLE IF EXISTS notes;
 
 CREATE TABLE bookmarks (
